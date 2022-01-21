@@ -9,7 +9,7 @@ import type { FontPlatform } from './types';
 const keyPairType = function (value: any) {
   const clone = JSON.parse(JSON.stringify(value));
 
-  return clone as Array<{ [key: string]: string }>;
+  return clone as Array<{ [key: string]: any }>;
 };
 
 export const DEFAULT_CONFIG = {
