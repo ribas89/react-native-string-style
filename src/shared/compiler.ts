@@ -61,10 +61,14 @@ export const stringToStyleResult = (
 
     const func = regexFunction?.func || genericToStyleResult;
 
-    const partialResult = func(stringStyle, config);
+    let partialResult = func(stringStyle, config);
+
+    const removeEmptyResults = (r: any) =>
+      typeof r === 'object' && Object.keys(r).length > 0;
+
+    partialResult = partialResult.filter(removeEmptyResults);
 
     if (partialResult?.length < 1) {
-      parseWarn(stringStyle);
       continue;
     }
 
