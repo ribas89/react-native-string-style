@@ -1,6 +1,6 @@
 {
   "name": "react-native-string-style",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "a string-based syntax for styling and scaling components while maintaining the layout aspect ratio in all devices sizes",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
