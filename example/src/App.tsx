@@ -1,11 +1,10 @@
 import React from 'react';
-
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   defaultConfig,
   objToRNStyle,
-  SView,
-  SText,
+  Text,
+  View,
 } from 'react-native-string-style';
 
 defaultConfig.update({
@@ -28,12 +27,12 @@ const TestComp = () => {
 
   return (
     <View style={styles.borderTest}>
-      <SText
+      <Text
         sstyle="c-orange:alpha:100 fs-20 lh-23 tdl-underline ff-default"
         style={pureStyle.pure}
       >
         This is a test
-      </SText>
+      </Text>
     </View>
   );
 };
@@ -41,15 +40,15 @@ const TestComp = () => {
 export default function App() {
   return (
     <View>
-      <SView sstyle="pd-br-10 bd-ra-bl-6 bd-ra-br-18 w-85% h-150 bg-blue:alpha:35 mg-tl-20 jcfe aife">
+      <View sstyle="pd-br-10 bd-ra-bl-6 bd-ra-br-18 w-85% h-150 bg-blue:alpha:35 mg-tl-20 jcfe aife">
         <TestComp />
         <TestComp />
         <TestComp />
-      </SView>
+      </View>
       {[...Array(4)].map((_v, i) => (
-        <SView key={i} sstyle="mg-t-4 mg-h-16 pd-4 bd-ra-2 bg-indigo">
-          <SText sstyle="fs-20 lh-20 fw-bold c-white ta-center">test</SText>
-        </SView>
+        <View key={i} sstyle="mg-t-4 mg-h-16 pd-4 bd-ra-2 bg-indigo">
+          <Text sstyle="fs-20 lh-20 fw-bold c-white ta-center">test</Text>
+        </View>
       ))}
     </View>
   );

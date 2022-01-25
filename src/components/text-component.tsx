@@ -1,16 +1,16 @@
 import React from 'react';
-import { Text, TextProps } from 'react-native';
+import { Text as RNText, TextProps } from 'react-native';
 
 import { mergeNativeStyle } from '../shared';
 
-export const SText: React.FC<TextProps & { sstyle?: string }> = (props) => {
+export const Text: React.FC<TextProps & { sstyle?: string }> = (props) => {
   const { children, sstyle, style } = props;
 
   const finalStyle = mergeNativeStyle({ sstyle, style });
 
   return (
-    <Text {...props} style={finalStyle}>
+    <RNText {...props} style={finalStyle}>
       {children}
-    </Text>
+    </RNText>
   );
 };

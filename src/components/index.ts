@@ -1,2 +1,2 @@
-export * from './sview-component';
-export * from './stext-component';
+export * from './view-component';
+export * from './text-component';
