@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native';
 
 import { mergeNativeStyle } from '../shared';
 
-export const SView: React.FC<ViewProps & { sstyle: string }> = (props) => {
+export const SView: React.FC<ViewProps & { sstyle?: string }> = (props) => {
   const { children, sstyle, style } = props;
 
   const finalStyle = mergeNativeStyle({ sstyle, style });

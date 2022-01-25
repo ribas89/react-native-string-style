@@ -153,4 +153,6 @@ export const mergeNativeStyle = ({
   }
 
   if (style) return style;
+
+  return {};
 };
