@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { Dimensions } from 'react-native';
 
-import { ConfigType, defaultConfig } from './config';
+import { ConfigInstance, defaultConfig } from './config';
 import { DEFAULT_JS_COLORS, REGEX_HEX } from './constants';
 
 import type { StyleResult } from './types';
@@ -15,7 +15,7 @@ export const parseWarn = (stringStyle: string): StyleResult[] => {
 
 export const getEndValue = (
   valueString: string,
-  config?: ConfigType
+  config?: ConfigInstance
 ): string | number => {
   const _config = config || defaultConfig;
   const valueRegex = /-([a-zA-Z0-9.#%:]+)$/;
@@ -46,7 +46,7 @@ export function relativePixel({
   return !!scaled ? scaled : 1;
 }
 
-export function scale(value: any, config: ConfigType) {
+export function scale(value: any, config: ConfigInstance) {
   const { width } = Dimensions.get('window');
   return relativePixel({
     value,
@@ -55,7 +55,7 @@ export function scale(value: any, config: ConfigType) {
   });
 }
 
-export function vscale(value: any, config: ConfigType): number {
+export function vscale(value: any, config: ConfigInstance): number {
   const { height } = Dimensions.get('window');
   return relativePixel({
     value,
@@ -71,7 +71,7 @@ export function getAlpha(value: number): string {
     .padStart(2, '0');
 }
 
-export function getColor(color: string, config: ConfigType) {
+export function getColor(color: string, config: ConfigInstance) {
   let _color = color;
   let alphaValue = '';
 

@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import { Platform } from 'react-native';
 
-import { ConfigType, defaultConfig } from '../config';
+import { ConfigInstance, defaultConfig } from '../config';
 import { parseWarn } from '../utils';
 
 import type { StyleResult } from '../types';
 export const fontFamilyToStyleResult = (
   stringStyle: string,
-  config?: ConfigType
+  config?: ConfigInstance
 ): StyleResult[] => {
   const _config = config || defaultConfig;
   const fontAliasRegex = /^ff-(.+)$/;

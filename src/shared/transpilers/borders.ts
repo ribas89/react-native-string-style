@@ -1,11 +1,11 @@
-import { ConfigType, defaultConfig } from '../config';
+import { ConfigInstance, defaultConfig } from '../config';
 import { getDirections } from '../directions';
 import { getEndValue, parseWarn } from '../utils';
 
 import type { StyleResult } from '../types';
 export const borderToStyleResult = (
   stringStyle: string,
-  config?: ConfigType
+  config?: ConfigInstance
 ): StyleResult[] => {
   const _config = config || defaultConfig;
   const propRegex = /-([a-z]+)-/;

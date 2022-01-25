@@ -1,17 +1,24 @@
-import { ConfigType, defaultConfig } from '../config';
+import { ConfigInstance, defaultConfig } from '../config';
 import { getDirections } from '../directions';
-import { resolveFunction } from '../resolver';
 import { getEndValue, parseWarn } from '../utils';
 
 import type { StyleResult } from '../types';
 export const spacesToStyleResult = (
   stringStyle: string,
-  config?: ConfigType
+  config?: ConfigInstance
 ): StyleResult[] => {
   const _config = config || defaultConfig;
 
-  const regexFunction = resolveFunction(stringStyle);
-  if (!regexFunction) return parseWarn(stringStyle);
+  const typeRegex = [
+    { type: 'padding', regex: /^pd-/ },
+    { type: 'margin', regex: /^mg-/ },
+  ];
+
+  const type = typeRegex.find(({ regex }) => {
+    return regex.exec(stringStyle);
+  })?.type;
+
+  if (!type) return parseWarn(stringStyle);
 
   const value = getEndValue(stringStyle, _config);
   if (!value || typeof value !== 'number') {
@@ -27,7 +34,7 @@ export const spacesToStyleResult = (
   const directions = getDirections(directionsString);
 
   const resultArray = directions.map((direction) => {
-    const propertyName = `${regexFunction.name}${direction}`;
+    const propertyName = `${type}${direction}`;
     return { propertyName, value, relativePixel: true };
   });
 

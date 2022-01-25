@@ -1,9 +1,9 @@
+import { borderToStyleResult } from './transpilers/borders';
+import { flexKeys, flexToStyleResult } from './transpilers/flex';
 import {
   fontFamilyToStyleResult,
   fontWeightToStyleResult,
-} from './transpilers';
-import { borderToStyleResult } from './transpilers/borders';
-import { flexKeys, flexToStyleResult } from './transpilers/flex';
+} from './transpilers/fonts';
 import { positionToStyleResult } from './transpilers/position';
 import { spacesToStyleResult } from './transpilers/spaces';
 

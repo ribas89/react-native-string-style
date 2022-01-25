@@ -1,10 +1,10 @@
-import { ConfigType, defaultConfig } from '../config';
+import { ConfigInstance, defaultConfig } from '../config';
 import { parseWarn } from '../utils';
 
 import type { StyleResult } from '../types';
 export const genericToStyleResult = (
   stringStyle: string,
-  config?: ConfigType
+  config?: ConfigInstance
 ): StyleResult[] => {
   const _config = config || defaultConfig;
 

@@ -8,7 +8,7 @@ import { formatStyleObject } from './transpilers/formatters';
 import { genericToStyleResult } from './transpilers/gereric';
 
 import type { StyleResult, CompileResultsProps } from './types';
-import type { ConfigType } from './config';
+import { ConfigInstance, defaultConfig } from './config';
 import { parseWarn } from './utils';
 export const partialResultCache = {} as any;
 export const finalResultCache = {} as any;
@@ -28,7 +28,7 @@ export const recursiveMerge = (arr: any[], instance = [] as any[]) => {
 
 export const stringToStyleResult = (
   stringStyles: string,
-  config?: ConfigType
+  config?: ConfigInstance
 ): StyleResult[] => {
   const finalCacheIndex = hash(stringStyles);
   const finalCache = finalResultCache[finalCacheIndex];
@@ -89,7 +89,7 @@ export const nativeStyleCache = {} as any;
 export const compileResults = (
   func: (props: CompileResultsProps) => void,
   styleEntires: [string, string][],
-  config?: ConfigType
+  config?: ConfigInstance
 ) => {
   styleEntires.forEach(([keyStyle, stringStyle]) => {
     const styleResultArray = stringToStyleResult(stringStyle, config);
@@ -103,8 +103,9 @@ export const objToRNStyle = (
   stringStylesObject: {
     [key: string]: string;
   },
-  config?: ConfigType
+  config?: ConfigInstance
 ) => {
+  const _config = config || defaultConfig;
   const styleEntires = Object.entries(stringStylesObject);
   if (!styleEntires.length) return StyleSheet.create({});
 
@@ -125,7 +126,7 @@ export const objToRNStyle = (
     ({ keyStyle, flattenedStyleObject }) =>
       _.set(finalStyleObject, keyStyle, flattenedStyleObject),
     styleEntires,
-    config
+    _config
   );
 
   const nativeStyleSheet = StyleSheet.create({ ...finalStyleObject });
