@@ -21,7 +21,7 @@ export const spacesToStyleResult = (
   if (!type) return parseWarn(stringStyle);
 
   const value = getEndValue(stringStyle, _config);
-  if (!value || typeof value !== 'number') {
+  if (typeof value !== 'number') {
     return parseWarn(stringStyle);
   }
 

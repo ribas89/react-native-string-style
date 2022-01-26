@@ -13,25 +13,26 @@ export const genericToStyleResult = (
 
   if (propMatches?.length !== 3) return parseWarn(stringStyle);
 
-  let propertyName = propMatches[1];
+  let propertyMatch = propMatches[1];
 
-  propertyName =
-    _config.genericAlias.find((a: any) => a.alias === propertyName)?.prop ||
-    propertyName;
+  const propertyName =
+    _config.genericAlias.find((a: any) => a.alias === propertyMatch)?.prop ||
+    propertyMatch;
 
-  let value: any = propMatches[2];
+  const value: any = propMatches[2];
 
   const colorValue = _config?.getColor(value) || false;
   if (colorValue && colorValue !== value) {
     return [{ propertyName, value: colorValue }];
   }
 
-  if (/^\d+$/.exec(value)) {
-    value = _config?.scale(Number(value)) || value;
+  const numberValue = Number(value);
+  if (!isNaN(numberValue)) {
+    const scaledValue = _config?.scale(numberValue) || numberValue;
     return [
       {
         propertyName,
-        value,
+        value: scaledValue,
         relativePixel: true,
       },
     ];

@@ -16,7 +16,7 @@ defaultConfig.update({
 const TestComp = () => {
   const styles = objToRNStyle({
     borderTest:
-      'bg-gray.12:alpha:30 bd-width-l-4 bd-width-b-4 bd-c-b-customColor bd-c-l-#ff6600:alpha:50 bd-ra-tr-5 bd-ra-bl-6',
+      'bg-gray.12:alpha:30 bd-width-l-4 bd-width-b-4 bd-c-b-customColor bd-c-l-#ff6600:alpha:50 bd-ra-tr-5 bd-ra-bl-6 padding-vertical-0',
   });
 
   const pureStyle = StyleSheet.create({
